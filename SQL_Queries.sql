@@ -63,4 +63,19 @@ CREATE PROCEDURE sp_buscar_inmueble_por_id @id_input int as
     EXECUTE sp_propiedades_precio_menor 400
     
     
- /**/
+ /*Stalin Ramos*/
+ /*Query 1*/
+        SELECT Distrito_id, COUNT ( Distrito_id) AS Total_En_Distrito
+        FROM Inmueble
+        GROUP BY Distrito_id
+        ORDER BY Total_En_Distrito DESC
+ /*Query 2*/   
+    ALTER PROCEDURE sp_propiedades_by_arrendador @Arrendatario_id int as
+    begin 
+      select nombre, Apellido, precio, area, direccion
+      from Inmueble P
+          join Arrendatario S on P.Arrendatario_id = S.id
+      where Arrendatario_id = @Arrendatario_id
+    end;
+    EXECUTE sp_propiedades_by_arrendador @Arrendatario_id:2
+    
