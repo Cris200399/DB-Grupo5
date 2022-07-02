@@ -30,3 +30,8 @@ db.universidad.aggregate([
 /*Query 2*/
 /*Universitarios que esten en la carrera de Ingenieria de Sistemas*/
 db.universitario.find({carrera:"Ingenieria de sistemas"},{_id:0, genero:0, edad:0, email:0,});
+
+/*Bruno Orue*/
+/*Query 1*/
+/*universitarios que se diferencie segun su genereo (masculino o femenino)*/
+db.universitario.find({$or: [{genero:"M"}]})
