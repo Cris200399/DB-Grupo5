@@ -33,3 +33,13 @@ SELECT universidad_id, COUNT (universidad_id) AS Total_Por_Universidad
 FROM Universitario
 GROUP BY universidad_id
 ORDER BY Total_Por_Universidad DESC
+
+/*Bruno Orue*/
+/*Query 1*/
+CREATE PROCEDURE sp_buscar_inmueble_por_id @id_input int as
+    begin
+        select distrito_id,precio,cbaños,area,direccion
+        from Inmueble
+        where Inmueble.id = @id_input
+        group by distrito_id, precio, cbaños, area, direccion
+    END;
