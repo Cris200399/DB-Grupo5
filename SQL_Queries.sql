@@ -43,3 +43,24 @@ CREATE PROCEDURE sp_buscar_inmueble_por_id @id_input int as
         where Inmueble.id = @id_input
         group by distrito_id, precio, cbaños, area, direccion
     END;
+   
+/*Omar Huaman*/
+/*Query 1*/
+        SELECT Arrendatario_id, COUNT ( Arrendatario_id) AS Total_En_Propiedades
+        FROM Inmueble
+        GROUP BY Arrendatario_id
+        ORDER BY Total_En_Propiedades DESC
+  /*Query 2*/   
+    CREATE PROCEDURE sp_propiedades_precio_menor @precio_input int as
+    BEGIN
+        SELECT nombre, COUNT (*)
+        FROM Inmueble P
+        JOIN Arrendatario S on P.arrendatario_id = S.id
+        WHERE precio <= @precio_input
+        GROUP BY nombre
+    END;
+    
+    EXECUTE sp_propiedades_precio_menor 400
+    
+    
+ /**/
